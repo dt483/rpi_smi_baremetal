@@ -30,7 +30,7 @@
 # CMake 2.8.10 Documentation: http://www.cmake.org/cmake/help/v2.8.10/cmake.html
 
 
-# CONFIGURE WITH: cmake -G "Unix Makefiles" -DCMAKE_TOOLCHAIN_FILE=../toolchain-arm-none-eabi-rpi.cmake ./
+# CONFIGURE WITH: cmake -G "Unix Makefiles" -DCMAKE_TOOLCHAIN_FILE=../toolchain-arm-none-eabi-rpi.cmake ../
 cmake_minimum_required( VERSION 2.8 )
 
 # Mark the language as C so that CMake doesn't try to test the C++

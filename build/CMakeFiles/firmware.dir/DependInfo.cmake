@@ -5,7 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_ASM
-  "/home/aleksey/rpi/firmware/armc-start.S" "/home/aleksey/rpi/firmware/build/CMakeFiles/firmware.dir/armc-start.S.obj"
+  "/home/eduard/rpi_smi_baremetal/armc-start.S" "/home/eduard/rpi_smi_baremetal/build/CMakeFiles/firmware.dir/armc-start.S.obj"
   )
 set(CMAKE_ASM_COMPILER_ID "GNU")
 
@@ -18,15 +18,15 @@ set(CMAKE_TARGET_DEFINITIONS_ASM
 set(CMAKE_ASM_TARGET_INCLUDE_PATH
   )
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/aleksey/rpi/firmware/armc-cstartup.c" "/home/aleksey/rpi/firmware/build/CMakeFiles/firmware.dir/armc-cstartup.c.obj"
-  "/home/aleksey/rpi/firmware/armc-cstubs.c" "/home/aleksey/rpi/firmware/build/CMakeFiles/firmware.dir/armc-cstubs.c.obj"
-  "/home/aleksey/rpi/firmware/firmware.c" "/home/aleksey/rpi/firmware/build/CMakeFiles/firmware.dir/firmware.c.obj"
-  "/home/aleksey/rpi/firmware/peripheral/rpi-armtimer.c" "/home/aleksey/rpi/firmware/build/CMakeFiles/firmware.dir/peripheral/rpi-armtimer.c.obj"
-  "/home/aleksey/rpi/firmware/peripheral/rpi-aux.c" "/home/aleksey/rpi/firmware/build/CMakeFiles/firmware.dir/peripheral/rpi-aux.c.obj"
-  "/home/aleksey/rpi/firmware/peripheral/rpi-gpio.c" "/home/aleksey/rpi/firmware/build/CMakeFiles/firmware.dir/peripheral/rpi-gpio.c.obj"
-  "/home/aleksey/rpi/firmware/peripheral/rpi-interrupts.c" "/home/aleksey/rpi/firmware/build/CMakeFiles/firmware.dir/peripheral/rpi-interrupts.c.obj"
-  "/home/aleksey/rpi/firmware/peripheral/rpi-smi.c" "/home/aleksey/rpi/firmware/build/CMakeFiles/firmware.dir/peripheral/rpi-smi.c.obj"
-  "/home/aleksey/rpi/firmware/peripheral/rpi-systimer.c" "/home/aleksey/rpi/firmware/build/CMakeFiles/firmware.dir/peripheral/rpi-systimer.c.obj"
+  "/home/eduard/rpi_smi_baremetal/armc-cstartup.c" "/home/eduard/rpi_smi_baremetal/build/CMakeFiles/firmware.dir/armc-cstartup.c.obj"
+  "/home/eduard/rpi_smi_baremetal/armc-cstubs.c" "/home/eduard/rpi_smi_baremetal/build/CMakeFiles/firmware.dir/armc-cstubs.c.obj"
+  "/home/eduard/rpi_smi_baremetal/firmware.c" "/home/eduard/rpi_smi_baremetal/build/CMakeFiles/firmware.dir/firmware.c.obj"
+  "/home/eduard/rpi_smi_baremetal/peripheral/rpi-armtimer.c" "/home/eduard/rpi_smi_baremetal/build/CMakeFiles/firmware.dir/peripheral/rpi-armtimer.c.obj"
+  "/home/eduard/rpi_smi_baremetal/peripheral/rpi-aux.c" "/home/eduard/rpi_smi_baremetal/build/CMakeFiles/firmware.dir/peripheral/rpi-aux.c.obj"
+  "/home/eduard/rpi_smi_baremetal/peripheral/rpi-gpio.c" "/home/eduard/rpi_smi_baremetal/build/CMakeFiles/firmware.dir/peripheral/rpi-gpio.c.obj"
+  "/home/eduard/rpi_smi_baremetal/peripheral/rpi-interrupts.c" "/home/eduard/rpi_smi_baremetal/build/CMakeFiles/firmware.dir/peripheral/rpi-interrupts.c.obj"
+  "/home/eduard/rpi_smi_baremetal/peripheral/rpi-smi.c" "/home/eduard/rpi_smi_baremetal/build/CMakeFiles/firmware.dir/peripheral/rpi-smi.c.obj"
+  "/home/eduard/rpi_smi_baremetal/peripheral/rpi-systimer.c" "/home/eduard/rpi_smi_baremetal/build/CMakeFiles/firmware.dir/peripheral/rpi-systimer.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

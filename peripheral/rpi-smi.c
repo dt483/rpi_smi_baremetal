@@ -1,4 +1,4 @@
-#include <stdint.h>
+    #include <stdint.h>
 #include <stdio.h>
 #include "rpi-smi.h"
 #include "rpi-base.h"
@@ -24,6 +24,7 @@ static inline void write_cm_smi_reg(struct smi_instance *inst, uint32_t val, rpi
 {
     rpi_reg_rw_t *target_reg =inst->cm_smi_regs_ptr + reg;
     *target_reg = val;
+//    *((unsigned int*) (CM_SMI_BASE_ADDRESS+CM_SMI_DIV)) =
 }
 
 static inline uint32_t read_cm_smi_reg(struct smi_instance *inst, rpi_reg_rw_t reg)
@@ -46,8 +47,8 @@ static inline uint32_t read_cm_smi_reg(struct smi_instance *inst, rpi_reg_rw_t r
 
 void smi_dump_context_labelled(struct smi_instance *inst)
 {
-    //RPI_SetGpioPinFunction( RPI_GPIO14, FS_ALT5 );
-    //RPI_SetGpioPinFunction( RPI_GPIO15, FS_ALT5 );
+//    RPI_SetGpioPinFunction( RPI_GPIO14, FS_ALT5 );
+//    RPI_SetGpioPinFunction( RPI_GPIO15, FS_ALT5 );
 
     printf("SMI context dump: \r\n");
     printf("CM_SMI_CTL:  0x%08x \r\n", read_cm_smi_reg(inst, CM_SMI_CTL));
@@ -59,16 +60,16 @@ void smi_dump_context_labelled(struct smi_instance *inst)
     printf("SMIDC:  0x%08x \r\n", read_smi_reg(inst, SMIDC));
     printf("SMIFD:  0x%08x \r\n", read_smi_reg(inst, SMIFD));
     printf(" \r\n");
-    RPI_WaitMicroSeconds(2000);
+    RPI_WaitMicroSeconds(200000);
 
-   // RPI_SetGpioPinFunction( RPI_GPIO14, FS_ALT1 );
-   // RPI_SetGpioPinFunction( RPI_GPIO15, FS_ALT1 );
+//   RPI_SetGpioPinFunction( RPI_GPIO14, FS_ALT1 );
+//   RPI_SetGpioPinFunction( RPI_GPIO15, FS_ALT1 );
 }
 
 void smi_init(struct smi_instance *inst)
 {
-    inst->cm_smi_regs_ptr = CM_SMI_BASE_ADDRESS ;
-    inst->smi_regs_ptr = SMI_BASE_ADDRESS ; //Pointer for base smi physical address
+    inst->cm_smi_regs_ptr = (uint32_t*) CM_SMI_BASE_ADDRESS ;
+    inst->smi_regs_ptr = (uint32_t*) SMI_BASE_ADDRESS ; //Pointer for base smi physical address
 
     printf ("Smi address inititalized: \r\n");
     printf ("CM_SMI base: 0x%08x: 0x%08x \r\n", inst->cm_smi_regs_ptr, *inst->cm_smi_regs_ptr);
@@ -131,6 +132,10 @@ void smi_set_regs_from_settings(struct smi_instance *inst)
     SET_BIT_FIELD(smidsr_temp, SMIDSR_RPACE, settings->read_pace_time);
     SET_BIT_FIELD(smidsr_temp, SMIDSR_RSTROBE, settings->read_strobe_time);
     write_smi_reg(inst, smidsr_temp, SMIDSR0);
+    write_smi_reg(inst, smidsr_temp, SMIDSR1);
+    write_smi_reg(inst, smidsr_temp, SMIDSR2);
+    write_smi_reg(inst, smidsr_temp, SMIDSR3);
+
 
     SET_BIT_FIELD(smidsw_temp, SMIDSW_WWIDTH, settings->data_width);
     if (settings->data_width == SMI_WIDTH_8BIT)
@@ -143,6 +148,10 @@ void smi_set_regs_from_settings(struct smi_instance *inst)
     SET_BIT_FIELD(smidsw_temp, SMIDSW_WSTROBE,
             settings->write_strobe_time);
     write_smi_reg(inst, smidsw_temp, SMIDSW0);
+    write_smi_reg(inst, smidsw_temp, SMIDSW1);
+    write_smi_reg(inst, smidsw_temp, SMIDSW2);
+    write_smi_reg(inst, smidsw_temp, SMIDSW3);
+
 
 
     //still not dma...
@@ -227,16 +236,23 @@ inline void smi_write_single_word(struct smi_instance *inst,
 
 void smi_setup_clock(struct smi_instance *inst, int divi, int divf)
 {
-    int  cm_smi_ctl_temp = 0,  cm_smi_div_temp = 0;
+    uint32_t  cm_smi_ctl_temp = 0,  cm_smi_div_temp = 0;
     cm_smi_ctl_temp = read_cm_smi_reg(inst, CM_SMI_CTL);
     cm_smi_div_temp = read_cm_smi_reg(inst, CM_SMI_DIV);
 
     SET_BIT_FIELD(cm_smi_ctl_temp, CM_SMI_CTL_SRC, 0x6);
-
-    write_cm_smi_reg(inst, cm_smi_ctl_temp | CM_PWD, CM_SMI_CTL);
+    //SET_BIT_FIELD(cm_smi_ctl_temp, CM_SMI_CTL_MASH, 0x2);
+    write_cm_smi_reg(inst, cm_smi_ctl_temp | CM_PWD | CM_SMI_CTL_ENAB, CM_SMI_CTL);
 
     SET_BIT_FIELD(cm_smi_div_temp, CM_SMI_DIV_DIVI, divi);
     SET_BIT_FIELD(cm_smi_div_temp, CM_SMI_DIV_DIVF, divf);
-    write_cm_smi_reg(inst, cm_smi_div_temp, CM_SMI_DIV);
+    cm_smi_div_temp|= CM_PWD;
+    printf ("DIV: 0x%08x\r\n",cm_smi_div_temp);
+    printf(" \r\n");
 
+    //unsigned int *div_addr = (unsigned int *)0x3F101074;
+
+   // write_cm_smi_reg(inst, cm_smi_div_temp, CM_SMI_DIV);
+   // *div_addr = (0x5a01E000);
+    *((unsigned int*) (CM_SMI_BASE_ADDRESS+CM_SMI_DIV)) = (cm_smi_div_temp|= CM_PWD);
 }

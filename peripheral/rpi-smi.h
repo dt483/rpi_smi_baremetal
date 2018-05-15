@@ -63,7 +63,8 @@ void smi_init(struct smi_instance *inst);
 #define SMI_WIDTH_18BIT 3
 
 /* Clock manager registers for SMI clock: */
-#define CM_SMI_BASE_ADDRESS ((PERIPHERAL_BASE) + 0x1010b0)
+//#define CM_SMI_BASE_ADDRESS ((PERIPHERAL_BASE) + 0x1010b0)
+#define CM_SMI_BASE_ADDRESS ((PERIPHERAL_BASE) + 0x101070)
 /* Clock manager "password" to protect registers from spurious writes */
 #define CM_PWD (0x5a << 24)
 
@@ -77,10 +78,13 @@ void smi_init(struct smi_instance *inst);
 #define CM_SMI_CTL_SRC_MASK (0xf)
 #define CM_SMI_CTL_SRC_OFFS (0)
 
-#define CM_SMI_DIV_DIVI_MASK (0xf <<  12)
+#define CM_SMI_CTL_MASH_MASK (0x3)
+#define CM_SMI_CTL_MASH_OFFS (9)
+
+#define CM_SMI_DIV_DIVI_MASK (0xfff<<12)
 #define CM_SMI_DIV_DIVI_OFFS (12)
-#define CM_SMI_DIV_DIVF_MASK (0xff << 4)
-#define CM_SMI_DIV_DIVF_OFFS (4)
+#define CM_SMI_DIV_DIVF_MASK (0xfff)
+#define CM_SMI_DIV_DIVF_OFFS (0)
 
 /* SMI register mapping:*/
 #define SMI_BASE_ADDRESS ((PERIPHERAL_BASE) + 0x600000)

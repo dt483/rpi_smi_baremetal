@@ -6,5 +6,5 @@
 
 #IncludeRegexTransform: 
 
-/home/aleksey/rpi/firmware/armc-start.S
+/home/eduard/rpi_smi_baremetal/armc-start.S
 

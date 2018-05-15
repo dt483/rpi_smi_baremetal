@@ -1,4 +1,4 @@
-# Install script for directory: /home/aleksey/rpi/firmware
+# Install script for directory: /home/eduard/rpi_smi_baremetal
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -35,5 +35,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/aleksey/rpi/firmware/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/eduard/rpi_smi_baremetal/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

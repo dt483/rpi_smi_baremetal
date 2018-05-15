@@ -8,38 +8,38 @@
       <Option virtualFolders="CMake Files\;" />
       <Build>
       <Target title="all">
-         <Option working_dir="/home/aleksey/rpi/firmware/build" />
+         <Option working_dir="/home/eduard/rpi_smi_baremetal/build" />
          <Option type="4" />
          <MakeCommands>
-            <Build command="/usr/bin/make -f &quot;/home/aleksey/rpi/firmware/build/Makefile&quot;  VERBOSE=1 all" />
-            <CompileFile command="/usr/bin/make -f &quot;/home/aleksey/rpi/firmware/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
-            <Clean command="/usr/bin/make -f &quot;/home/aleksey/rpi/firmware/build/Makefile&quot;  VERBOSE=1 clean" />
-            <DistClean command="/usr/bin/make -f &quot;/home/aleksey/rpi/firmware/build/Makefile&quot;  VERBOSE=1 clean" />
+            <Build command="/usr/bin/make -f &quot;/home/eduard/rpi_smi_baremetal/build/Makefile&quot;  VERBOSE=1 all" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/eduard/rpi_smi_baremetal/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/eduard/rpi_smi_baremetal/build/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/eduard/rpi_smi_baremetal/build/Makefile&quot;  VERBOSE=1 clean" />
          </MakeCommands>
       </Target>
       <Target title="edit_cache">
-         <Option working_dir="/home/aleksey/rpi/firmware/build" />
+         <Option working_dir="/home/eduard/rpi_smi_baremetal/build" />
          <Option type="4" />
          <MakeCommands>
-            <Build command="/usr/bin/make -f &quot;/home/aleksey/rpi/firmware/build/Makefile&quot;  VERBOSE=1 edit_cache" />
-            <CompileFile command="/usr/bin/make -f &quot;/home/aleksey/rpi/firmware/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
-            <Clean command="/usr/bin/make -f &quot;/home/aleksey/rpi/firmware/build/Makefile&quot;  VERBOSE=1 clean" />
-            <DistClean command="/usr/bin/make -f &quot;/home/aleksey/rpi/firmware/build/Makefile&quot;  VERBOSE=1 clean" />
+            <Build command="/usr/bin/make -f &quot;/home/eduard/rpi_smi_baremetal/build/Makefile&quot;  VERBOSE=1 edit_cache" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/eduard/rpi_smi_baremetal/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/eduard/rpi_smi_baremetal/build/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/eduard/rpi_smi_baremetal/build/Makefile&quot;  VERBOSE=1 clean" />
          </MakeCommands>
       </Target>
       <Target title="rebuild_cache">
-         <Option working_dir="/home/aleksey/rpi/firmware/build" />
+         <Option working_dir="/home/eduard/rpi_smi_baremetal/build" />
          <Option type="4" />
          <MakeCommands>
-            <Build command="/usr/bin/make -f &quot;/home/aleksey/rpi/firmware/build/Makefile&quot;  VERBOSE=1 rebuild_cache" />
-            <CompileFile command="/usr/bin/make -f &quot;/home/aleksey/rpi/firmware/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
-            <Clean command="/usr/bin/make -f &quot;/home/aleksey/rpi/firmware/build/Makefile&quot;  VERBOSE=1 clean" />
-            <DistClean command="/usr/bin/make -f &quot;/home/aleksey/rpi/firmware/build/Makefile&quot;  VERBOSE=1 clean" />
+            <Build command="/usr/bin/make -f &quot;/home/eduard/rpi_smi_baremetal/build/Makefile&quot;  VERBOSE=1 rebuild_cache" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/eduard/rpi_smi_baremetal/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/eduard/rpi_smi_baremetal/build/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/eduard/rpi_smi_baremetal/build/Makefile&quot;  VERBOSE=1 clean" />
          </MakeCommands>
       </Target>
       <Target title="firmware">
-         <Option output="/home/aleksey/rpi/firmware/build/firmware" prefix_auto="0" extension_auto="0" />
-         <Option working_dir="/home/aleksey/rpi/firmware/build" />
+         <Option output="/home/eduard/rpi_smi_baremetal/build/firmware" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/eduard/rpi_smi_baremetal/build" />
          <Option object_output="./" />
          <Option type="1" />
          <Option compiler="gcc" />
@@ -50,15 +50,15 @@
             <Add directory="/usr/lib/gcc/arm-none-eabi/4.9.3/include-fixed" />
          </Compiler>
          <MakeCommands>
-            <Build command="/usr/bin/make -f &quot;/home/aleksey/rpi/firmware/build/Makefile&quot;  VERBOSE=1 firmware" />
-            <CompileFile command="/usr/bin/make -f &quot;/home/aleksey/rpi/firmware/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
-            <Clean command="/usr/bin/make -f &quot;/home/aleksey/rpi/firmware/build/Makefile&quot;  VERBOSE=1 clean" />
-            <DistClean command="/usr/bin/make -f &quot;/home/aleksey/rpi/firmware/build/Makefile&quot;  VERBOSE=1 clean" />
+            <Build command="/usr/bin/make -f &quot;/home/eduard/rpi_smi_baremetal/build/Makefile&quot;  VERBOSE=1 firmware" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/eduard/rpi_smi_baremetal/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/eduard/rpi_smi_baremetal/build/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/eduard/rpi_smi_baremetal/build/Makefile&quot;  VERBOSE=1 clean" />
          </MakeCommands>
       </Target>
       <Target title="firmware/fast">
-         <Option output="/home/aleksey/rpi/firmware/build/firmware" prefix_auto="0" extension_auto="0" />
-         <Option working_dir="/home/aleksey/rpi/firmware/build" />
+         <Option output="/home/eduard/rpi_smi_baremetal/build/firmware" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/eduard/rpi_smi_baremetal/build" />
          <Option object_output="./" />
          <Option type="1" />
          <Option compiler="gcc" />
@@ -69,68 +69,71 @@
             <Add directory="/usr/lib/gcc/arm-none-eabi/4.9.3/include-fixed" />
          </Compiler>
          <MakeCommands>
-            <Build command="/usr/bin/make -f &quot;/home/aleksey/rpi/firmware/build/Makefile&quot;  VERBOSE=1 firmware/fast" />
-            <CompileFile command="/usr/bin/make -f &quot;/home/aleksey/rpi/firmware/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
-            <Clean command="/usr/bin/make -f &quot;/home/aleksey/rpi/firmware/build/Makefile&quot;  VERBOSE=1 clean" />
-            <DistClean command="/usr/bin/make -f &quot;/home/aleksey/rpi/firmware/build/Makefile&quot;  VERBOSE=1 clean" />
+            <Build command="/usr/bin/make -f &quot;/home/eduard/rpi_smi_baremetal/build/Makefile&quot;  VERBOSE=1 firmware/fast" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/eduard/rpi_smi_baremetal/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/eduard/rpi_smi_baremetal/build/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/eduard/rpi_smi_baremetal/build/Makefile&quot;  VERBOSE=1 clean" />
          </MakeCommands>
       </Target>
       </Build>
-      <Unit filename="/home/aleksey/rpi/firmware/armc-cstartup.c">
+      <Unit filename="/home/eduard/rpi_smi_baremetal/armc-cstartup.c">
          <Option target="firmware"/>
       </Unit>
-      <Unit filename="/home/aleksey/rpi/firmware/armc-cstubs.c">
+      <Unit filename="/home/eduard/rpi_smi_baremetal/armc-cstubs.c">
          <Option target="firmware"/>
       </Unit>
-      <Unit filename="/home/aleksey/rpi/firmware/armc-start.S">
+      <Unit filename="/home/eduard/rpi_smi_baremetal/armc-start.S">
          <Option target="firmware"/>
       </Unit>
-      <Unit filename="/home/aleksey/rpi/firmware/firmware.c">
+      <Unit filename="/home/eduard/rpi_smi_baremetal/firmware.c">
          <Option target="firmware"/>
       </Unit>
-      <Unit filename="/home/aleksey/rpi/firmware/peripheral/rpi-armtimer.c">
+      <Unit filename="/home/eduard/rpi_smi_baremetal/peripheral/rpi-armtimer.c">
          <Option target="firmware"/>
       </Unit>
-      <Unit filename="/home/aleksey/rpi/firmware/peripheral/rpi-armtimer.h">
+      <Unit filename="/home/eduard/rpi_smi_baremetal/peripheral/rpi-armtimer.h">
          <Option target="firmware"/>
       </Unit>
-      <Unit filename="/home/aleksey/rpi/firmware/peripheral/rpi-aux.c">
+      <Unit filename="/home/eduard/rpi_smi_baremetal/peripheral/rpi-aux.c">
          <Option target="firmware"/>
       </Unit>
-      <Unit filename="/home/aleksey/rpi/firmware/peripheral/rpi-aux.h">
+      <Unit filename="/home/eduard/rpi_smi_baremetal/peripheral/rpi-aux.h">
          <Option target="firmware"/>
       </Unit>
-      <Unit filename="/home/aleksey/rpi/firmware/peripheral/rpi-base.h">
+      <Unit filename="/home/eduard/rpi_smi_baremetal/peripheral/rpi-base.h">
          <Option target="firmware"/>
       </Unit>
-      <Unit filename="/home/aleksey/rpi/firmware/peripheral/rpi-gpio.c">
+      <Unit filename="/home/eduard/rpi_smi_baremetal/peripheral/rpi-gpio.c">
          <Option target="firmware"/>
       </Unit>
-      <Unit filename="/home/aleksey/rpi/firmware/peripheral/rpi-gpio.h">
+      <Unit filename="/home/eduard/rpi_smi_baremetal/peripheral/rpi-gpio.h">
          <Option target="firmware"/>
       </Unit>
-      <Unit filename="/home/aleksey/rpi/firmware/peripheral/rpi-interrupts.c">
+      <Unit filename="/home/eduard/rpi_smi_baremetal/peripheral/rpi-interrupts.c">
          <Option target="firmware"/>
       </Unit>
-      <Unit filename="/home/aleksey/rpi/firmware/peripheral/rpi-interrupts.h">
+      <Unit filename="/home/eduard/rpi_smi_baremetal/peripheral/rpi-interrupts.h">
          <Option target="firmware"/>
       </Unit>
-      <Unit filename="/home/aleksey/rpi/firmware/peripheral/rpi-smi.c">
+      <Unit filename="/home/eduard/rpi_smi_baremetal/peripheral/rpi-smi.c">
          <Option target="firmware"/>
       </Unit>
-      <Unit filename="/home/aleksey/rpi/firmware/peripheral/rpi-smi.h">
+      <Unit filename="/home/eduard/rpi_smi_baremetal/peripheral/rpi-smi.h">
          <Option target="firmware"/>
       </Unit>
-      <Unit filename="/home/aleksey/rpi/firmware/peripheral/rpi-systimer.c">
+      <Unit filename="/home/eduard/rpi_smi_baremetal/peripheral/rpi-systimer.c">
          <Option target="firmware"/>
       </Unit>
-      <Unit filename="/home/aleksey/rpi/firmware/peripheral/rpi-systimer.h">
+      <Unit filename="/home/eduard/rpi_smi_baremetal/peripheral/rpi-systimer.h">
          <Option target="firmware"/>
       </Unit>
-      <Unit filename="/home/aleksey/rpi/firmware/CMakeLists.txt">
+      <Unit filename="/home/eduard/rpi_smi_baremetal/CMakeLists.txt">
           <Option virtualFolder="CMake Files\" />
       </Unit>
-      <Unit filename="/home/aleksey/rpi/firmware/toolchain-arm-none-eabi-rpi2.cmake">
+      <Unit filename="/home/eduard/rpi_smi_baremetal/toolchain-arm-none-eabi-rpi2.cmake">
+          <Option virtualFolder="CMake Files\" />
+      </Unit>
+      <Unit filename="/home/eduard/rpi_smi_baremetal/toolchain-arm-none-eabi-rpi2.cmake">
           <Option virtualFolder="CMake Files\" />
       </Unit>
    </Project>

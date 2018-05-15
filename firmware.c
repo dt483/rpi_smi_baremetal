@@ -63,13 +63,15 @@ void kernel_main( unsigned int r0, unsigned int r1, unsigned int atags )
 
     RPI_WaitMicroSeconds(2000000);
 
-    smi_setup_clock(&smi_iface, 50, 0);
-    smi_setup_regs(&smi_iface);
-    smi_set_address(&smi_iface, 0x0 );
+    RPI_SetGpioPinFunction(RPI_GPIO4,FS_ALT0);
+
+    smi_setup_clock(&smi_iface, 30, 0);
+    //smi_setup_regs(&smi_iface);
+//    smi_set_address(&smi_iface, 0x0 );
 
 
-    /*int i;
-    for (i=0; i<44; i++)
+   /* int i;
+    for (i=4; i<4; i++)
     {
       if (~((i==25)|(i==26)))
       {
@@ -77,10 +79,12 @@ void kernel_main( unsigned int r0, unsigned int r1, unsigned int atags )
       }
     }*/
 
+
+
     printf( "Setup complete :\r\n\n" );
     smi_dump_context_labelled(&smi_iface);
     while( 1 )
     {
-            smi_write_single_word(&smi_iface, 0x5555AAAA);
+           // smi_write_single_word(&smi_iface, 0x5555AAAA);
     }
 }
