@@ -1,3 +1,0 @@
-/home/eduard/rpi_smi_baremetal/build/CMakeFiles/edit_cache.dir
-/home/eduard/rpi_smi_baremetal/build/CMakeFiles/rebuild_cache.dir
-/home/eduard/rpi_smi_baremetal/build/CMakeFiles/firmware.dir
