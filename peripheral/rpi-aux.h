@@ -33,6 +33,8 @@
 
 #include "rpi-base.h"
 
+#define  _E "\r\n"
+
 /* Although these values were originally from the BCM2835 Arm peripherals PDF
    it's clear that was rushed and has some glaring errors - so these values
    may appear to be different. These values have been changed due to data on

@@ -49,6 +49,7 @@ set( CROSS_COMPILE arm-none-eabi- )
 # the -nostartfiles option on the command line
 CMAKE_FORCE_C_COMPILER( ${TC_PATH}${CROSS_COMPILE}gcc GNU )
 
+
 # We must set the OBJCOPY setting into cache so that it's available to the
 # whole project. Otherwise, this does not get set into the CACHE and therefore
 # the build doesn't know what the OBJCOPY filepath is

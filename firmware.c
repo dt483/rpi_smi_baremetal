@@ -31,14 +31,15 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 #include "./peripheral/rpi-aux.h"
 #include "./peripheral/rpi-gpio.h"
-#include "./peripheral/rpi-interrupts.h"
+//#include "./peripheral/rpi-interrupts.h"
 #include "./peripheral/rpi-systimer.h"
 #include "./peripheral/rpi-smi.h"
 
-
+extern uint32_t global_counter;
 
 /** Main function - we'll never return from here */
 void kernel_main( unsigned int r0, unsigned int r1, unsigned int atags )
@@ -48,43 +49,73 @@ void kernel_main( unsigned int r0, unsigned int r1, unsigned int atags )
 
     /* Initialise the UART */
     RPI_AuxMiniUartInit( 115200, 8 );
+    RPI_WaitMicroSeconds(2000000);
+    rpi_sys_timer_t *timer = RPI_GetSystemTimer();
 
     /* Print to the UART using the standard libc functions */
     printf( "Initialise UART console with standard libc\r\n\n" );
 
-    RPI_WaitMicroSeconds(2000000);
+    struct smi_settings _smi;
 
-    struct smi_instance smi_iface;
-    smi_init(&smi_iface);
-    smi_dump_context_labelled(&smi_iface);
+    //smi_dump_context_labelled();
 
+    smi_setup_clock(0, 0);
 
-
-
-    RPI_WaitMicroSeconds(2000000);
-
-    RPI_SetGpioPinFunction(RPI_GPIO4,FS_ALT0);
-
-    smi_setup_clock(&smi_iface, 30, 0);
-    //smi_setup_regs(&smi_iface);
-//    smi_set_address(&smi_iface, 0x0 );
+    smi_set_default_settings(&_smi);
+    _smi.write_hold_time = 1;
+    _smi.write_strobe_time = 1;
+    _smi.write_setup_time = 1;
+    _smi.write_pace_time = 1;
+    smi_setup(&_smi);
 
 
-   /* int i;
-    for (i=4; i<4; i++)
+    //RPI_WaitMicroSeconds(2000000);
+
+
+    smi_set_address(0x0 );
+
+
+    volatile uint32_t i,k;
+    for (i=0; i<=43; i++)
     {
-      if (~((i==25)|(i==26)))
+      if (!((i==26)|(i==27)|(i==14)|(i==15)|(i==4)))
       {
         RPI_SetGpioPinFunction(i,FS_ALT1);
       }
-    }*/
+    }
+    RPI_SetGpioPinFunction(4,FS_ALT0);
+    gpioclk_setup_clock(0x5,0);
 
+    uint8_t d[4096];
+    k=0;
+    for (i=0; i<4096; i++)
+    {
+        d[i]=k++;
+        if (k>=0xFF) k=0;
 
-
+    }
+   // int counter;
     printf( "Setup complete :\r\n\n" );
-    smi_dump_context_labelled(&smi_iface);
+    smi_dump_context_labelled();
+
+    // smi_write_fifo((uint32_t)d, 4096);
+     uint32_t count0 = 1;
+     uint32_t t1, t2;
+
     while( 1 )
     {
-           // smi_write_single_word(&smi_iface, 0x5555AAAA);
-    }
+
+       // smi_write_single_word(1);
+       //     smi_write_n_words(d,1024);
+   // RPI_WaitMicroSeconds(1000);
+   // t1 = timer->counter_lo;
+     smi_write_fifo((uint32_t)d, 4096);
+    // t2 = timer->counter_lo;
+    // RPI_WaitMicroSeconds(1000);
+    // printf ("Global count: %i \r\n", global_counter);
+    // printf ("Timer count : %i cycles\r\n", t2-t1);
+    // count0++;
+
+
+   }
 }

@@ -20,6 +20,14 @@ void RPI_SetGpioPinFunction( rpi_gpio_pin_t gpio, rpi_gpio_alt_function_t func )
     *fsel_reg = fsel_copy;
 }
 
+rpi_gpio_alt_function_t RPI_GetGpioPinFunction( rpi_gpio_pin_t gpio)
+{
+
+    rpi_reg_rw_t* fsel_reg_state = &((rpi_reg_rw_t*)rpiGpio)[ gpio / 10 ];
+    return  (*fsel_reg_state & ( FS_MASK << ( ( gpio % 10 ) * 3 ) ) ) >>
+                                                                         ( ( gpio % 10 ) * 3 );
+}
+
 
 void RPI_SetGpioOutput( rpi_gpio_pin_t gpio )
 {

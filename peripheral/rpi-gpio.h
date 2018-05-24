@@ -200,6 +200,7 @@ typedef enum {
 
 extern rpi_gpio_t* RPI_GetGpio(void);
 extern void RPI_SetGpioPinFunction( rpi_gpio_pin_t gpio, rpi_gpio_alt_function_t func );
+rpi_gpio_alt_function_t RPI_GetGpioPinFunction( rpi_gpio_pin_t gpio);
 extern void RPI_SetGpioOutput( rpi_gpio_pin_t gpio );
 extern void RPI_SetGpioInput( rpi_gpio_pin_t gpio );
 extern rpi_gpio_value_t RPI_GetGpioValue( rpi_gpio_pin_t gpio );

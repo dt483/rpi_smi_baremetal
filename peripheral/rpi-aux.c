@@ -71,9 +71,18 @@ void RPI_AuxMiniUartInit( int baud, int bits )
 
 void RPI_AuxMiniUartWrite( char c )
 {
+
+    rpi_gpio_alt_function_t current_gpio14_func = RPI_GetGpioPinFunction(RPI_GPIO14);
+    rpi_gpio_alt_function_t current_gpio15_func = RPI_GetGpioPinFunction(RPI_GPIO15);
+    RPI_SetGpioPinFunction( RPI_GPIO14, FS_ALT5 );
+    RPI_SetGpioPinFunction( RPI_GPIO15, FS_ALT5 );
     /* Wait until the UART has an empty space in the FIFO */
     while( ( auxillary->MU_LSR & AUX_MULSR_TX_EMPTY ) == 0 ) { }
 
     /* Write the character to the FIFO for transmission */
-    auxillary->MU_IO = c;
+    auxillary->MU_IO = c;    
+    while( ( auxillary->MU_LSR & AUX_MULSR_TX_EMPTY ) == 0 ) { }
+    RPI_SetGpioPinFunction( RPI_GPIO14, current_gpio14_func );
+    RPI_SetGpioPinFunction( RPI_GPIO15, current_gpio15_func );
+
 }

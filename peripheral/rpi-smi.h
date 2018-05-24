@@ -6,6 +6,8 @@
 #include <stdbool.h>
 #include "rpi-base.h"
 
+uint32_t global_counter;
+
 struct smi_settings {
     int data_width;
     /* Whether or not to pack multiple SMI transfers into a
@@ -21,6 +23,11 @@ struct smi_settings {
      * SA -<=========================================>-
      *    <-setup->  <-strobe ->  <-hold ->  <- pace ->
      */
+
+    int pixels_format;
+    bool pixels_swap;
+    bool data_request;
+
 
     int read_setup_time;
     int read_hold_time;
@@ -43,18 +50,36 @@ struct smi_settings {
 };
 
 
-struct smi_instance {
-    struct smi_settings settings;
-    uint32_t *cm_smi_regs_ptr;// = CM_SMI_BASE_ADDRESS ;
-    uint32_t *smi_regs_ptr;// = SMI_BASE_ADDRESS ; //Pointer for base smi physical address
-};
 
-inline void smi_set_address(struct smi_instance *inst, unsigned int address);
-void smi_setup_regs(struct smi_instance *inst);
-inline void smi_write_single_word(struct smi_instance *inst,uint32_t data);
-void smi_dump_context_labelled(struct smi_instance *inst);
-void smi_setup_clock(struct smi_instance *inst, int divi, int divf);
-void smi_init(struct smi_instance *inst);
+//Init pipeline:
+// 1: create and set the smi instance settings by: smi_settings
+//    (or set default settings by smi_set_default_settings )
+// 2: setup clk by:  smi_setup_clock
+// 3: setup registers by settings: smi_setup
+
+struct smi_settings settings;
+
+void smi_setup_clock(int divi, int divf);
+
+void smi_set_default_settings(struct smi_settings *settings);
+
+void smi_setup(struct smi_settings *settings);
+
+inline void smi_set_address(unsigned int address);
+
+
+
+inline void smi_write_single_word(uint32_t data);
+
+void smi_write_n_words(uint32_t *data, int n);
+
+void smi_write_fifo(uint32_t *src, int n_bytes);
+
+void smi_dump_context_labelled();
+
+
+//gpio clk
+void gpioclk_setup_clock(int divi, int divf);
 
 
 #define SMI_WIDTH_8BIT 0
@@ -63,8 +88,8 @@ void smi_init(struct smi_instance *inst);
 #define SMI_WIDTH_18BIT 3
 
 /* Clock manager registers for SMI clock: */
-//#define CM_SMI_BASE_ADDRESS ((PERIPHERAL_BASE) + 0x1010b0)
-#define CM_SMI_BASE_ADDRESS ((PERIPHERAL_BASE) + 0x101070)
+#define CM_SMI_BASE_ADDRESS ((PERIPHERAL_BASE) + 0x1010b0)
+#define CM_GPIO_BASE_ADDRESS ((PERIPHERAL_BASE) + 0x101070)
 /* Clock manager "password" to protect registers from spurious writes */
 #define CM_PWD (0x5a << 24)
 
@@ -78,7 +103,7 @@ void smi_init(struct smi_instance *inst);
 #define CM_SMI_CTL_SRC_MASK (0xf)
 #define CM_SMI_CTL_SRC_OFFS (0)
 
-#define CM_SMI_CTL_MASH_MASK (0x3)
+#define CM_SMI_CTL_MASH_MASK (0x3<<9)
 #define CM_SMI_CTL_MASH_OFFS (9)
 
 #define CM_SMI_DIV_DIVI_MASK (0xfff<<12)
@@ -175,7 +200,7 @@ void smi_init(struct smi_instance *inst);
  * SMIDC_DMAEN	: DMA enable: set 1: DMA requests will be issued.
  * SMIDC_DMAP	: DMA passthrough: when set to 0, top two data pins are used by
  *		  SMI as usual. When set to 1, the top two pins are used for
- *		  external DREQs: pin 16 read request, 17 write.
+ *		  external DREQs: pin 16 read request, 17 write.  <----- 0
  * SMIDC_PANIC*	: Threshold at which DMA will panic during read/write.
  * SMIDC_REQ*	: Threshold at which DMA will generate a DREQ.
  */

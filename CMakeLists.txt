@@ -30,7 +30,7 @@
 # CMake 2.8.10 Documentation: http://www.cmake.org/cmake/help/v2.8.10/cmake.html
 
 
-# CONFIGURE WITH: cmake -G "Unix Makefiles" -DCMAKE_TOOLCHAIN_FILE=../toolchain-arm-none-eabi-rpi.cmake ../
+# CONFIGURE WITH: cmake -G "Unix Makefiles" -DCMAKE_TOOLCHAIN_FILE=../rpi_smi_baremetal/toolchain-arm-none-eabi-rpi.cmake ../rpi_smi_baremetal/
 cmake_minimum_required( VERSION 2.8 )
 
 # Mark the language as C so that CMake doesn't try to test the C++
@@ -42,6 +42,7 @@ project( firmware C ASM )
 set( CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O1" )
 set( CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall" )
 set( CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -nostartfiles" )
+set( CMAKE_VERBOSE_MAKEFILE ON )
 
 # Set the linker flags so that we use our "custom" linker script
 set( CMAKE_EXE_LINKER_FLAGS "-Wl,-T,${PROJECT_SOURCE_DIR}/rpi.x" )
@@ -58,7 +59,7 @@ add_executable(  firmware
     ./peripheral/rpi-base.h
     ./peripheral/rpi-gpio.c
     ./peripheral/rpi-gpio.h
-    ./peripheral/rpi-interrupts.c
+  ./peripheral/rpi-interrupts.c
     ./peripheral/rpi-interrupts.h
 #    ./peripheral/rpi-mailbox.c
 #    ./peripheral/rpi-mailbox.h
@@ -69,6 +70,8 @@ add_executable(  firmware
     ./peripheral/rpi-smi.c
     ./peripheral/rpi-smi.h
 )
+
+TARGET_LINK_LIBRARIES(firmware m)
 
 add_custom_command(
     TARGET  firmware POST_BUILD
