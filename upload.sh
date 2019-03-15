@@ -18,9 +18,3 @@ sudo sz $FIRMWARE > $DEV < $DEV --xmodem
 
 sudo minicom -D $DEV;
 #rm ./port
-
-
-#added some new strings
-#bla bla
-#bla bla bla
-#ducking gooose!
